@@ -1,42 +1,14 @@
-import React from "react";
-import { Box, Button, ButtonGroup, Flex, Menu, Text } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { useMediaQuery } from "@chakra-ui/react";
+import { NavbarLarge } from "./Menu/NavbarLarge";
+import { NavbarResponsive } from "./Menu/NavbarResponsive";
 
 export const Navbar = () => {
-	return (
-		<>
-			<Box
-				bg="#F9F9F9"
-				fontFamily="Open Sans"
-				position="fixed"
-				zIndex="1001"
-				w="100%"
-			>
-				<Flex
-					minWidth="max-content"
-					alignItems="center"
-					justifyContent="space-around"
-					gap="2"
-				>
-					<Menu>
-						<ButtonGroup>
-							<Button variant="ghost">
-								RickAndMorty <Text color="blue.600">Wiki </Text>
-							</Button>
-						</ButtonGroup>
-						<ButtonGroup>
-							<Button colorScheme="blue" variant="link">
-								Characters
-							</Button>
-							<Button colorScheme="blue" variant="link">
-								Episode
-							</Button>
-							<Button colorScheme="blue" variant="link">
-								Location
-							</Button>
-						</ButtonGroup>
-					</Menu>
-				</Flex>
-			</Box>
-		</>
-	);
+	const [isLargerThan550] = useMediaQuery("(min-width: 550px)");
+
+	useEffect(() => {
+		if (!isLargerThan550) return;
+	}, [isLargerThan550]);
+
+	return <>{isLargerThan550 ? <NavbarLarge /> : <NavbarResponsive />}</>;
 };
