@@ -1,7 +1,7 @@
 import React from "react";
 import { Center, Container, Grid, GridItem } from "@chakra-ui/react";
 
-import { CardItem } from "../CardItem";
+import { CardItem } from "./CardItem";
 
 export const Card = ({ results }) => {
 	return (

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "./Components/Menu/Card";
+import { Card } from "./Components/Card";
 import { Navbar } from "./Components/Navbar";
 import { Search } from "./Components/Search";
 
 export const App = () => {
-	const URL = `https://rickandmortyapi.com/api/character/?page=1`;
 	const [fetchedData, updateFetchedData] = useState([]);
-	const [pageNumber, setPageNumber] = useState(0);
+	const [pageNumber, setPageNumber] = useState(1);
 	const [searched, setSearched] = useState("");
 	const { info, results } = fetchedData;
+	const URL = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${searched}`;
 
 	useEffect(() => {
 		fetch(URL)
@@ -21,7 +21,7 @@ export const App = () => {
 	return (
 		<>
 			<Navbar />
-			<Search />
+			<Search setSearched={setSearched} setPageNumber={setPageNumber} />
 			<Card results={results} />
 		</>
 	);
