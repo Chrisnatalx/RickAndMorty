@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../context/Context";
 import {
 	Accordion,
 	AccordionButton,
@@ -10,6 +11,12 @@ import {
 } from "@chakra-ui/react";
 
 export const Acordion = () => {
+	const { setStatus, setgender, setspecies } = useContext(Context);
+
+	const statuses = ["Alive", "Dead", "Unknown"];
+	const genders = ["Female", "Male", "Genderles"];
+	const specieses = ["Human", "Alien", "Robot", "Unknown", "Animal"];
+
 	return (
 		<>
 			<Accordion allowToggle m={2} w="80%">
@@ -22,15 +29,16 @@ export const Acordion = () => {
 					</AccordionButton>
 
 					<AccordionPanel pb={4}>
-						<Button m={2} colorScheme="blue">
-							Alive
-						</Button>
-						<Button m={2} colorScheme="blue">
-							Dead
-						</Button>
-						<Button m={2} colorScheme="blue">
-							Unknown
-						</Button>
+						{statuses.map((status) => (
+							<Button
+								key={status}
+								m={2}
+								colorScheme="blue"
+								onClick={() => setStatus(status)}
+							>
+								{status}
+							</Button>
+						))}
 					</AccordionPanel>
 				</AccordionItem>
 
@@ -43,15 +51,16 @@ export const Acordion = () => {
 					</AccordionButton>
 
 					<AccordionPanel pb={4}>
-						<Button m={2} colorScheme="blue">
-							Female
-						</Button>
-						<Button m={2} colorScheme="blue">
-							Male
-						</Button>
-						<Button m={2} colorScheme="blue">
-							Genderles
-						</Button>
+						{genders.map((gender) => (
+							<Button
+								key={gender}
+								m={2}
+								colorScheme="blue"
+								onClick={() => setgender(gender)}
+							>
+								{gender}
+							</Button>
+						))}
 					</AccordionPanel>
 				</AccordionItem>
 
@@ -64,21 +73,16 @@ export const Acordion = () => {
 					</AccordionButton>
 
 					<AccordionPanel pb={4}>
-						<Button m={2} colorScheme="blue">
-							Human
-						</Button>
-						<Button m={2} colorScheme="blue">
-							Alien
-						</Button>
-						<Button m={2} colorScheme="blue">
-							Unknown
-						</Button>
-						<Button m={2} colorScheme="blue">
-							Robot
-						</Button>
-						<Button m={2} colorScheme="blue">
-							Animal
-						</Button>
+						{specieses.map((species) => (
+							<Button
+								key={species}
+								m={2}
+								colorScheme="blue"
+								onClick={() => setspecies(species)}
+							>
+								{species}
+							</Button>
+						))}
 					</AccordionPanel>
 				</AccordionItem>
 			</Accordion>
