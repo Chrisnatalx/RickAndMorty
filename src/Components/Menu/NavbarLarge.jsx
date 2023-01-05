@@ -1,5 +1,14 @@
 import React from "react";
-import { Box, Button, ButtonGroup, Flex, Menu, Text } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
+import {
+	Box,
+	Button,
+	ButtonGroup,
+	Flex,
+	Menu,
+	Text,
+	Link,
+} from "@chakra-ui/react";
 
 export const NavbarLarge = () => {
 	return (
@@ -19,20 +28,29 @@ export const NavbarLarge = () => {
 				>
 					<Menu>
 						<ButtonGroup>
-							<Button variant="ghost">
-								RickAndMorty <Text color="blue.600">Wiki </Text>
-							</Button>
+							<Link as={RouterLink} to="/">
+								<Button variant="ghost">
+									RickAndMorty <Text color="blue.600">Wiki </Text>
+								</Button>
+							</Link>
 						</ButtonGroup>
 						<ButtonGroup>
-							<Button colorScheme="blue" variant="link">
-								Characters
-							</Button>
-							<Button colorScheme="blue" variant="link">
-								Episode
-							</Button>
-							<Button colorScheme="blue" variant="link">
-								Location
-							</Button>
+							<Link as={RouterLink} to="/">
+								<Button colorScheme="blue" variant="link">
+									Characters
+								</Button>
+							</Link>
+							<Link as={RouterLink} to="/Episode">
+								<Button colorScheme="blue" variant="link">
+									Episode
+								</Button>
+							</Link>
+
+							<Link as={RouterLink} to="/Location">
+								<Button colorScheme="blue" variant="link">
+									Location
+								</Button>
+							</Link>
 						</ButtonGroup>
 					</Menu>
 				</Flex>

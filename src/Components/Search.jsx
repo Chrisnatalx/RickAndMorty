@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../context/Context";
 import { Button, Center, Flex, Heading, Input } from "@chakra-ui/react";
 
-export const Search = ({ setPageNumber, setSearched }) => {
+export const Search = () => {
+	const { setPageNumber, setSearched } = useContext(Context);
+
 	const searchButton = (e) => {
 		e.preventDefault();
 	};
@@ -9,7 +12,7 @@ export const Search = ({ setPageNumber, setSearched }) => {
 	return (
 		<Center pt="40px" fontFamily="Open Sans">
 			<Flex direction="column" alignItems="center">
-				<Heading m={2}>Character</Heading>
+				<Heading m={2}>Characters</Heading>
 				<Flex direction="row" justifyItems="center" gap="2">
 					<Input
 						placeholder="Search character"
@@ -20,7 +23,6 @@ export const Search = ({ setPageNumber, setSearched }) => {
 						}}
 					/>
 					<Button colorScheme="blue" onClick={searchButton}>
-						{" "}
 						Search
 					</Button>
 				</Flex>
