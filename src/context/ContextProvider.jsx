@@ -9,7 +9,7 @@ export const ContextProvider = ({ children }) => {
 	const [gender, setgender] = useState("");
 	const [species, setspecies] = useState("");
 
-	const { info, results } = fetchedData;
+	const { results, info } = fetchedData;
 	const URL = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${searched}&status=${status}&gender=${gender}&species=${species}`;
 
 	useEffect(() => {
@@ -28,6 +28,8 @@ export const ContextProvider = ({ children }) => {
 				setStatus,
 				setgender,
 				setspecies,
+				updateFetchedData,
+				info,
 			}}
 		>
 			{children}

@@ -4,6 +4,7 @@ import { FilterCharacters } from "../Components/Filter/FilterCharacters";
 import { Navbar } from "../Components/Navbar";
 import { Search } from "../Components/Search";
 import { Grid, GridItem } from "@chakra-ui/react";
+import { Pagination } from "../Components/Pagination";
 
 export const CharactersView = () => {
 	return (
@@ -18,6 +19,7 @@ export const CharactersView = () => {
 					<Card />
 				</GridItem>
 			</Grid>
+			<Pagination />
 		</>
 	);
 };

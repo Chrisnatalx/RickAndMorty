@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-export const CardItem = ({ image, name, status, gender, location }) => {
+export const CardEpisodeItem = ({ image, name, status, gender, location }) => {
 	return (
 		<>
 			<Card maxW="sm" m={4} fontFamily="Open Sans">
