@@ -4,38 +4,47 @@ import { Navbar } from "../Components/Navbar";
 import { Card } from "../Components/Card";
 import { FilterEpisode } from "../Components/Filter/FilterEpisode";
 import { Center, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
+import { CardEpisode } from "../Components/CardEpisode";
 
 export const EpisodeViews = () => {
-	const {} = useContext(Context);
-	const [infoEpisode, setinfoEpisode] = useState([]);
-	const { air_date, name, id, characters } = infoEpisode;
-	const results = characters;
+	const { updateFetchedData } = useContext(Context);
 
-	const URLEPISODE = `https://rickandmortyapi.com/api/episode/1`;
+	const [id, setId] = useState(1);
+	const [info, setinfo] = useState([]);
+	const [results, setResults] = useState([]);
+
+	// results deberia mandarlo a Cards no a CardEpisode
+	const { air_date, name } = info;
+	const API = `https://rickandmortyapi.com/api/episode/${id}`;
 
 	useEffect(() => {
-		fetch(URLEPISODE)
-			.then((res) => res.json())
-			.then((data) => {
-				setinfoEpisode(data);
-			});
-	}, [URLEPISODE]);
+		(async function () {
+			const data = await fetch(API).then((res) => res.json());
+			setinfo(data);
+			const a = await Promise.all(
+				data.characters.map((x) => {
+					return fetch(x).then((res) => res.json());
+				})
+			);
+			setResults(a);
+		})();
+	}, [API]);
 
 	return (
 		<>
 			<Navbar />
-			<Center pt="40px" fontFamily="Open Sans">
-				<Heading m={2}>
-					Episode {id} : {name}
+			<Center pt="40px" fontFamily="Open Sans" flexDirection="column">
+				<Heading color="blue.400" m={2}>
+					Episode name : {name === "" ? "Unknown" : name}
 				</Heading>
-				<Text>{air_date}</Text>
+				<Text>{air_date === "" ? "Unknown" : air_date}</Text>
 			</Center>
 			<Grid templateColumns="repeat(5, 1fr)">
 				<GridItem colSpan={1}>
-					<FilterEpisode />
+					<FilterEpisode total={51} name={name} setId={setId} />
 				</GridItem>
 				<GridItem colSpan={4}>
-					<Card />
+					<CardEpisode results={results} />
 				</GridItem>
 			</Grid>
 		</>

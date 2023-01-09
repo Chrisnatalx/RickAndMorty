@@ -1,10 +1,12 @@
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {
 	Box,
 	Button,
 	Flex,
 	IconButton,
+	Link,
 	Menu,
 	MenuButton,
 	MenuItem,
@@ -35,9 +37,15 @@ export const NavbarResponsive = () => {
 
 						<MenuButton as={IconButton} icon={<GiHamburgerMenu />}></MenuButton>
 						<MenuList>
-							<MenuItem>Characters</MenuItem>
-							<MenuItem>Episode</MenuItem>
-							<MenuItem>Location</MenuItem>
+							<Link as={RouterLink} to="/">
+								<MenuItem>Characters</MenuItem>
+							</Link>
+							<Link as={RouterLink} to="/Episode">
+								<MenuItem>Episode</MenuItem>
+							</Link>
+							<Link as={RouterLink} to="/Location">
+								<MenuItem>Location</MenuItem>
+							</Link>
 						</MenuList>
 					</Menu>
 				</Flex>

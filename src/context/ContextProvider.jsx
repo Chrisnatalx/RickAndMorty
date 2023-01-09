@@ -10,6 +10,7 @@ export const ContextProvider = ({ children }) => {
 	const [species, setspecies] = useState("");
 
 	const { results, info } = fetchedData;
+
 	const URL = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${searched}&status=${status}&gender=${gender}&species=${species}`;
 
 	useEffect(() => {
@@ -19,6 +20,7 @@ export const ContextProvider = ({ children }) => {
 				updateFetchedData(data);
 			});
 	}, [URL]);
+
 	return (
 		<Context.Provider
 			value={{

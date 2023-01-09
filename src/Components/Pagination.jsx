@@ -25,7 +25,6 @@ export const Pagination = () => {
 				mb="30px"
 				justifyContent="center"
 				fontFamily="Open Sans"
-				ali
 			>
 				<Container w="70%" display="flex" justifyContent="space-evenly">
 					{counter > 1 ? (

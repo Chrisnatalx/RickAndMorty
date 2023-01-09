@@ -2,7 +2,7 @@ import React from "react";
 import { CardItem } from "./CardItem";
 import { Center, Container, Grid, GridItem, Heading } from "@chakra-ui/react";
 
-export const CardEpisode = ({ results }) => {
+export const CardLocation = ({ results }) => {
 	const message = " Ups... character not found";
 	return (
 		<Center>
