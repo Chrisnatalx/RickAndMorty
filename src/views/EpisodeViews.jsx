@@ -3,7 +3,14 @@ import { Context } from "../context/Context";
 import { Navbar } from "../Components/Navbar";
 import { Card } from "../Components/Card";
 import { FilterEpisode } from "../Components/Filter/FilterEpisode";
-import { Center, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
+import {
+	Center,
+	Grid,
+	GridItem,
+	Heading,
+	Text,
+	useMediaQuery,
+} from "@chakra-ui/react";
 import { CardEpisode } from "../Components/CardEpisode";
 
 export const EpisodeViews = () => {
@@ -29,6 +36,11 @@ export const EpisodeViews = () => {
 			setResults(a);
 		})();
 	}, [API]);
+	const [isLargerThan550] = useMediaQuery("(min-width: 550px)");
+
+	useEffect(() => {
+		if (!isLargerThan550) return;
+	}, [isLargerThan550]);
 
 	return (
 		<>
@@ -39,14 +51,26 @@ export const EpisodeViews = () => {
 				</Heading>
 				<Text>{air_date === "" ? "Unknown" : air_date}</Text>
 			</Center>
-			<Grid templateColumns="repeat(5, 1fr)">
-				<GridItem colSpan={1}>
-					<FilterEpisode total={51} name={name} setId={setId} />
-				</GridItem>
-				<GridItem colSpan={4}>
-					<CardEpisode results={results} />
-				</GridItem>
-			</Grid>
+
+			{isLargerThan550 ? (
+				<Grid templateColumns="repeat(5, 1fr)">
+					<GridItem colSpan={1}>
+						<FilterEpisode total={51} name={name} setId={setId} />
+					</GridItem>
+					<GridItem colSpan={4}>
+						<CardEpisode results={results} />
+					</GridItem>
+				</Grid>
+			) : (
+				<Grid>
+					<GridItem>
+						<FilterEpisode total={51} name={name} setId={setId} />
+					</GridItem>
+					<GridItem>
+						<CardEpisode results={results} />
+					</GridItem>
+				</Grid>
+			)}
 		</>
 	);
 };

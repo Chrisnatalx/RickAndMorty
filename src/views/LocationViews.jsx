@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Navbar } from "../Components/Navbar";
 import { FilterLocation } from "../Components/Filter/FilterLocation";
-import { Center, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
+import {
+	Center,
+	Grid,
+	GridItem,
+	Heading,
+	Text,
+	useMediaQuery,
+} from "@chakra-ui/react";
 import { CardLocation } from "../Components/CardLocation";
 
 export const LocationViews = () => {
@@ -25,6 +32,12 @@ export const LocationViews = () => {
 		})();
 	}, [API]);
 
+	const [isLargerThan550] = useMediaQuery("(min-width: 550px)");
+
+	useEffect(() => {
+		if (!isLargerThan550) return;
+	}, [isLargerThan550]);
+
 	return (
 		<>
 			<Navbar />
@@ -35,14 +48,25 @@ export const LocationViews = () => {
 				<Text fontSize="xl">Dimension: {dimension}</Text>
 				<Text>Type: {type}</Text>
 			</Center>
-			<Grid templateColumns="repeat(5, 1fr)">
-				<GridItem colSpan={1}>
-					<FilterLocation total={126} name={name} setId={setId} />
-				</GridItem>
-				<GridItem colSpan={4}>
-					<CardLocation results={results} />
-				</GridItem>
-			</Grid>
+			{isLargerThan550 ? (
+				<Grid templateColumns="repeat(5, 1fr)">
+					<GridItem colSpan={1}>
+						<FilterLocation total={126} name={name} setId={setId} />
+					</GridItem>
+					<GridItem colSpan={4}>
+						<CardLocation results={results} />
+					</GridItem>
+				</Grid>
+			) : (
+				<Grid>
+					<GridItem>
+						<FilterLocation total={126} name={name} setId={setId} />
+					</GridItem>
+					<GridItem>
+						<CardLocation results={results} />
+					</GridItem>
+				</Grid>
+			)}
 		</>
 	);
 };
