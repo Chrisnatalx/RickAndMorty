@@ -47,7 +47,7 @@ export const EpisodeViews = () => {
 			<Navbar />
 			<Center pt="40px" fontFamily="Open Sans" flexDirection="column">
 				<Heading color="blue.400" m={2}>
-					Episode name : {name === "" ? "Unknown" : name}
+					Episode name : {name}
 				</Heading>
 				<Text>{air_date === "" ? "Unknown" : air_date}</Text>
 			</Center>
