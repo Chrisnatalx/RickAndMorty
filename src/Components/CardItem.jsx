@@ -1,13 +1,17 @@
+import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
 	Badge,
+	Button,
 	Card,
 	CardBody,
+	Center,
 	Heading,
 	Image,
+	Link,
 	Stack,
 	Text,
 } from "@chakra-ui/react";
-import React from "react";
 
 export const CardItem = ({ image, name, status, gender, location }) => {
 	return (

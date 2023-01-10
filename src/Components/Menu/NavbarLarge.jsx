@@ -28,7 +28,7 @@ export const NavbarLarge = () => {
 				>
 					<Menu>
 						<ButtonGroup>
-							<Link as={RouterLink} to="/">
+							<Link as={RouterLink} to="/" style={{ textDecoration: "none" }}>
 								<Button variant="ghost">
 									RickAndMorty <Text color="blue.600">Wiki </Text>
 								</Button>

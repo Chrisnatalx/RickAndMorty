@@ -31,9 +31,11 @@ export const NavbarResponsive = () => {
 					gap="2"
 				>
 					<Menu>
-						<Button variant="ghost">
-							RickAndMorty <Text color="blue.600">Wiki </Text>
-						</Button>
+						<Link as={RouterLink} to="/" style={{ textDecoration: "none" }}>
+							<Button variant="ghost">
+								RickAndMorty <Text color="blue.600">Wiki </Text>
+							</Button>
+						</Link>
 
 						<MenuButton as={IconButton} icon={<GiHamburgerMenu />}></MenuButton>
 						<MenuList>

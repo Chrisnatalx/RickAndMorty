@@ -34,6 +34,9 @@ export const Acordion = () => {
 								key={status}
 								m={2}
 								colorScheme="blue"
+								_focus={{
+									bg: "blue.800",
+								}}
 								onClick={() => setStatus(status)}
 							>
 								{status}
@@ -56,6 +59,9 @@ export const Acordion = () => {
 								key={gender}
 								m={2}
 								colorScheme="blue"
+								_focus={{
+									bg: "blue.800",
+								}}
 								onClick={() => setgender(gender)}
 							>
 								{gender}
@@ -78,6 +84,9 @@ export const Acordion = () => {
 								key={species}
 								m={2}
 								colorScheme="blue"
+								_focus={{
+									bg: "blue.800",
+								}}
 								onClick={() => setspecies(species)}
 							>
 								{species}
